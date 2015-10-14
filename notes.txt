@@ -1,0 +1,50 @@
+
+
+#OK so...maybe here's how to model reward:
+#the learning process simply modifies learning weights that tie each behavior to each appetite based on past
+#changes
+#one 'appetite' can be pleasure or fun-seeking but this is just one among several, which happens to have
+#potentially strong postive (and negative) payoffs from just about everything.
+
+#this still doesn't tell us how to model the anxious person who studies because they want to avoid failing...
+
+#the core action tendency equation doesn't work well.
+#we need some other way to integrate reward that
+# - separates out reward and punishments.
+# - shows how avoiding one thing (e.g., friends) could lead to other things (study)
+# - and how that could lead to learning usefulness of study
+# - try out a fifth aversive state, "mood" which is intrinsicially linked to all reward
+# - or
+
+#steve's questions:
+# - How to do reinforcement leaning?
+# - What to do with the cue*IS strength equation.
+#       (might try just taking the reward system out entirely and see what we can get without it)
+#       (also go back to notes)
+#       Could also try ADDING cue*IS and reward, so that EITHER cue*IS OR reward is needed
+#       alternatively cue*(IS | Reward), which could be accomplished by making Reward just another 'drive'
+#       and then modeling it with associationist learning rather than simple reward-punishment learning
+#       There are problems with both and we may need to separate intrinsic reward signal which is intrinsic with learning
+#       from other ways of doing things.
+#       ...Perhaps the Elicitor->State relationship should be subject to learning; this would be the mechanism which
+#       keeps elicitors attached to reward without reward being explicitly modeled in the actionTendency model.
+
+#Steve's answers:
+#   - add a Action --> Cue system
+#   - Focus on Elicitation, not Facilitation. Assume we always have Facilitation.
+# random thought:
+
+
+# - whatever solution we choose needs to reflect the idea that fulfillment of a more desperate need should lead to
+# greater reward signal, and possibly to the extent that a need is only motivating if there's dopamine release on
+# fulfilling it. (is that biologically accurate though? if wanting without liking is a thing then we wouldn't want to model this)
+
+
+
+# - Depression?
+# show how state and trait-level effects can lead to similar outcomes in any given situation
+
+# should the elicitors be stimulating IS rather than multiplying by it? Possibly:
+#   -for eating, there's a *physiological* state of hunger; this is then combined with an elicitor (food) to get an *interoceptive* state
+#   which is then processed for actual decision-making.
+#   - we really need to decide exactly what "Internal State" or "Interoceptive State" is: is it a pre-existing urge or something else?
