@@ -1,7 +1,3 @@
-Save for Later
-
-
-119 seconds
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
