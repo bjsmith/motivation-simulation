@@ -1,4 +1,9 @@
+import matplotlib.pyplot as plt #we might do some other tool later.
+__author__ = 'benjaminsmith'
+from SetupBaseStudentModel import *
 
+#first model showing within-subject changes.
+bb = setup_base_student_model()
 
 
 bb.display_current_state()
