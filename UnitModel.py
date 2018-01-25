@@ -10,6 +10,9 @@ class UnitModel(object):
         self.name = name
         self.value = value
 
+    # def __new__(self,name,value):
+    #     return float.__new__(self,value)
+
     @classmethod
     def GetLayerOfUnits(cls,layer,layer_type="UnspecifiedLayer"):
         object_type = layer_type

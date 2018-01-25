@@ -35,9 +35,9 @@ def setup_base_student_model():
     bb=BisbasModel(
         states =
         [{"name":"Hunger", "value":1},
-            {"name":"SocialNeed", "value":1},
+            {"name":"Need for affiliation", "value":1},
             {"name":"RomanticNeed","value":1},
-            {"name":"KnowledgeNeed","value":0.7},
+            {"name":"Need for achievement","value":0.7},
             {"name":"Fear","value":0}],
         actions =
         UnitModel.GetLayerOfUnits([
@@ -51,15 +51,15 @@ def setup_base_student_model():
             {"name":"Friends", "value":0},
             {"name":"Potential partner","value":0},
             {"name":"Library","value":0},
-            {"name":"Threat","value":0}],
+            {"name":"Danger","value":0}],
         baseline_pos_expectancy=1,
         baseline_neg_expectancy=1,
         baseline_action_threshold=2,
         learning_rate=0.05,
-        action_tendency_persistence=1-0.08,
+        action_tendency_persistence=1-0.10,
         satiation_power=0.05,
         consummatory_power=0.05,
-        gains_v_losses=0.8)
+        gains_v_losses=1.5)
 
     bb.display_current_state_text()
     #keep it simple - map each action to the corresponding state
@@ -103,14 +103,13 @@ def setup_base_student_model():
     bb.action_elicitor[i_partner,i_partner]=1
     #studying also doesn't get 'consumed'.
     bb.action_elicitor[i_study,i_study]=0
+    #neither is the need satiated very quickly.
+    bb.action_state[i_study,i_study]=bb.action_state[i_study,i_study]/8
 
     #fleeing will quickly remove the threat.
     bb.action_elicitor[i_fear_threat,i_fear_threat]=0.5
 
     #but fear lasts a little longer.
     bb.action_state[i_fear_threat,i_fear_threat]=bb.action_state[i_fear_threat,i_fear_threat]*2
-
-    #neither is the need satiated very quickly.
-    bb.action_state[i_study,i_study]=bb.action_state[i_study,i_study]/4
 
     return bb
