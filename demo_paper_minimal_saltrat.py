@@ -1,20 +1,13 @@
 import matplotlib.pyplot as plt #we might do some other tool later.
 from SimulationVisualization import *
 __author__ = 'benjaminsmith'
-from SetupBaseSaltRatModel import *
-#import Tkinter as tk
+from SetupMinimalSaltRatModel import *
 
-
-
-model1 = setup_base_salt_rat_model()
+model1 = setup_minimal_salt_rat_model()
 
 model1.set_display_settings(tendency_graph_width=6, state_graph_width=8.0)
 
-
-#first model showing within-subject changes.
-
-
-def demo_oversatiation(model):
+def demo_minimal(model):
     base_hz=2
 
     model.set_display_settings(graph_title="Status: Saliene deficient")
@@ -29,22 +22,22 @@ def demo_oversatiation(model):
 
     # inject saliene
     model.set_display_settings(graph_title="Status: Saliene injected")
-    model.states[i_salt].value = -0.5
+    model.states[i_salt].value = -1
 
 
 
     #model some more time going by
     model.step_and_display(10, base_hz)
 
-    model.set_display_settings(graph_title="Status: Induced saliene deficiency")
+    model.set_display_settings(graph_title="Status: Induced very strong saliene deficiency")
     #after a while, saliene is important again
-    model.states[i_salt].value = 1.0
+    model.states[i_salt].value = 2.0
 
     model.step_and_display(20, base_hz)
 
     return model
 
-demo_oversatiation(model1)
+demo_minimal(model1)
 
 SimulationVisualization.graph_model_record(model1)
 

@@ -431,7 +431,7 @@ class BisbasModel:
         ax_matrices.set_axis_off()
         axm_name_x = 0
         axm=0
-        col_incr=0.3
+        col_incr=1.0/(len(self.actions)+1)
         ax_m=0.5
         ax_m=[0.5+col_incr*c for c in range(0,4)]
         ax_n=[0.8-line_height*(i+1) for i in range(0,5)]
@@ -443,10 +443,11 @@ class BisbasModel:
         #self.elicitor_action= get_layer_interaction(self.elicitors,self.actions)
         #column names
         for a_i, a in enumerate(self.actions):
-            ax_matrices.text((a_i+1)*(col_incr), 0.8 - line_height, "\n".join(textwrap.wrap(a.name,14)), fontsize=axm_fontsize,wrap=True,fontstretch='condensed')
+            ax_matrices.text((a_i+1)*(col_incr), 0.8 - line_height, "\n".join(textwrap.wrap(a.name,14)),
+                             fontsize=min(axm_fontsize,axm_fontsize/(len(a.name))*20),wrap=True,fontstretch='condensed')
         #row names
         for s_i, s in enumerate(self.states):
-            ax_matrices.text(0, 0.8 - line_height*(s_i+2), s.name, fontsize=axm_fontsize,wrap=True,fontstretch='condensed')
+            ax_matrices.text(0, 0.8 - line_height*(s_i+2), s.name, fontsize=min(axm_fontsize,axm_fontsize/(len(s.name))*10),wrap=True,fontstretch='condensed')
 
         for r_i,r in enumerate(self.state_action):
             for c_i, cell in enumerate(r):

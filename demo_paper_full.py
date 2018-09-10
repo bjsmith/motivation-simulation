@@ -7,7 +7,7 @@ from SetupBaseStudentModel import *
 
 #first model showing within-subject changes.
 model1 = setup_base_student_model()
-
+model1.set_display_settings(graph_width=3,tendency_graph_width=4)
 
 def run_through_typical_study_day(model):
     # 1)	Role of Affordances
@@ -20,10 +20,10 @@ def run_through_typical_study_day(model):
     model.elicitors[i_study].value=1.0
 
     while all([a.value==0 for a in model.actions]):
-        model.step()
+        model.step_and_display(1,1)
 
     for i in range(0,5):
-        model.step()
+        model.step_and_display(1,1)
     #SimulationVisualization.graph_model_record(model)
 
     #try to have this more obviously be leaving friends rather than getting bored of social situation.
@@ -32,10 +32,10 @@ def run_through_typical_study_day(model):
     model.elicitors[i_friends].value=0.0
 
     while model.actions[i_study].value==0.0:
-        model.step()
+        model.step_and_display(1,1)
 
     for i in range(0,5):
-        model.step()
+        model.step_and_display(1,1)
     #SimulationVisualization.graph_model_record(model)
 
 
@@ -45,17 +45,17 @@ def run_through_typical_study_day(model):
     #text from friend: free food giveaway in the student quad
     model.elicitors[i_food].value=1.0
     while model.actions[i_food].value==0.0:
-        model.step()
+        model.step_and_display(1,1)
 
     for i in range(0,15): #do 15 steps
-        model.step()
+        model.step_and_display(1,1)
     #SimulationVisualization.graph_model_record(model)
 
     #OK say there's another food giveaway
     model.elicitors[i_food].value=1.0
 
     for i in range(0,10):  #do 10 steps
-        model.step()
+        model.step_and_display(1,1)
 
     #this time the model still goes for the food, but spends very little time before returning to study.
 
@@ -65,20 +65,20 @@ def run_through_typical_study_day(model):
     #after a while studying, hunge returns
     model.states[i_food].value=1.0
     for i in range(0,10):  #do 10 steps
-        model.step()
+        model.step_and_display(1,1)
 
 
 
     # b.	After several cycles of eating, Hunger interoceptive state will drop and it will go back to Studying.
     for i in range(0,10):  #do 10 steps
-        model.step()
+        model.step_and_display(1,1)
 
 
     # 4)	Romantic partner
     # an attractive person walks into the study space and the individual wants to hit on them
     model.elicitors[i_partner].value=1.0
     for i in range(0,10):  #do 10 steps
-        model.step()
+        model.step_and_display(1,1)
     # because this opportunity is immediately 'consumed', i.e., after an approach, there's a result (rejection or not)
     # the model returns to studying behavior.
 

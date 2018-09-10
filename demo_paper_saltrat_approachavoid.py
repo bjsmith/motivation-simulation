@@ -6,6 +6,7 @@ from SetupAASaltRatModel import *
 
 model1 = setup_AA_salt_rat_model()
 
+model1.set_display_settings(state_graph_width=3,tendency_graph_width=1)
 #first model showing within-subject changes.
 
 def demo_oversatiation(model):
@@ -16,22 +17,24 @@ def demo_oversatiation(model):
     #but rather than having competing states (PleasureNeed vs. SaltNeed)
     #we have a single state (saltNeed).
     #the action is created by balancing approach/avoid.
+    do_step = lambda n : model.step_and_display(n,0.7)
+    #do_step = lambda n : model.step(n)
 
     model.states[i_salt].value = 1.0
     model.set_display_settings(graph_title="Status: Induced saliene deficiency")
-    model.step_repeatedly(10)
+    do_step(10)
 
     model.states[i_salt].value = -1.0
     model.set_display_settings(graph_title="Status: Saliene injected")
-    model.step_repeatedly(10)
+    do_step(10)
 
     model.states[i_salt].value = 1.0
     model.set_display_settings(graph_title="Status: Induced saliene deficiency")
-    model.step_repeatedly(10)
+    do_step(10)
 
     model.states[i_salt].value = -1.0
     model.set_display_settings(graph_title="Status: Saliene injected")
-    model.step_repeatedly(10)
+    do_step(10)
 
     # model.states[i_pleasant_taste].value = 0
     # model.set_display_settings(graph_title="Removed pleasant taste craving")

@@ -17,60 +17,60 @@ def demo_oversatiation(model):
     model.states[i_salt].value = 1.0
 
     model.set_display_settings(graph_title="Status: Induced saliene deficiency")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.states[i_salt].value = -1.0
     model.set_display_settings(graph_title="Status: Saliene injected")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.states[i_salt].value = 1.0
     model.set_display_settings(graph_title="Status: Induced saliene deficiency")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.states[i_salt].value = -1.0
     model.set_display_settings(graph_title="Status: Saliene injected")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.elicitors[i_moderate_solution].value = 0
     model.set_display_settings(graph_title="Removed Moderate salt option")
-    model.step_repeatedly(5)
+    model.step_and_display(5,hz=0.7)
 
     model.states[i_salt].value = 1.0
     model.set_display_settings(graph_title="Status: Induced saliene deficiency")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.states[i_salt].value = -1.0
     model.set_display_settings(graph_title="Status: Saliene injected")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.states[i_salt].value = 1.0
     model.set_display_settings(graph_title="Status: Induced saliene deficiency")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.states[i_salt].value = -1.0
     model.set_display_settings(graph_title="Status: Saliene injected")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.elicitors[i_moderate_solution].value = 1
     model.states[i_pleasant_taste].value = 0
     model.set_display_settings(graph_title="Removed pleasant taste craving")
-    model.step_repeatedly(5)
+    model.step_and_display(5,hz=0.7)
 
     model.states[i_salt].value = 1.0
     model.set_display_settings(graph_title="Status: Induced saliene deficiency")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.states[i_salt].value = -1.0
     model.set_display_settings(graph_title="Status: Saliene injected")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.states[i_salt].value = 1.0
     model.set_display_settings(graph_title="Status: Induced saliene deficiency")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     model.states[i_salt].value = -1.0
     model.set_display_settings(graph_title="Status: Saliene injected")
-    model.step_repeatedly(10)
+    model.step_and_display(10,hz=0.7)
 
     return model
 

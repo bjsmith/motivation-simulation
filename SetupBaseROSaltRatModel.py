@@ -29,7 +29,7 @@ def setup_base_ro_salt_rat_model():
 
 
     #Learning: positive feedback increases mood; negative feedback decreases it. Not sure how to implement this..
-    satiation_power=0.01
+    satiation_power=0.04
     bb=BisbasROModel(
         states =
         [{"name":"PleasureNeed", "value":1},
