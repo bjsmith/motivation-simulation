@@ -6,11 +6,11 @@ from IPython.display import Markdown
 
 
 #some helper functions for the latex equation
-def ndarray_latex_format(np_ndarray):
-    return '\\begin{bmatrix}' + " \\\\ ".join([str(round(x,2)) for x in np_ndarray]) + '\\end{bmatrix}'
+def ndarray_latex_format(np_ndarray,rounding=2):
+    return '\\begin{bmatrix}' + " \\\\ ".join([str(round(x,rounding)) for x in np_ndarray]) + '\\end{bmatrix}'
 
-def krc_term_to_latex(term):
-    return str(term["kappa"]) + " \\times " + ndarray_latex_format(term['r']) +  "\\circ " + ndarray_latex_format(term['cue'])
+def krc_term_to_latex(term,rounding=2):
+    return str(term["kappa"]) + " \\times " + ndarray_latex_format(term['r'],rounding) +  "\\circ " + ndarray_latex_format(term['cue'])
 
 
 
@@ -69,19 +69,22 @@ $$
 & + \kappa_{{\\text{{Glc}}}} \mathbf{{r}}_{{\\text{{Glc}}}}\mathbf{{c}} \\\\
  = & {Na_term} & + {h_term} & + {Glc_term} \\\\
  = & {Na_val} & + {h_val} & + {Glc_val} \\\\
- = & {function_val} \\begin{{matrix}} \\textit{{Moderate Salt solution}}\\\\ \\textit{{Strong Salt solution}}\\\\ \\textit{{Sugar solution}} \\end{{matrix}}
+ = & {function_val} \\begin{{matrix}} \\textit{{{sln1_val}}}\\\\ \\textit{{{sln2_val}}}\\\\ \\textit{{{sln3_val}}} \\end{{matrix}}
 \end{{split}}
 \end{{align}}
 $$
 """
 
-def get_and_format_main_equation_text(term_Na,term_h,term_Glc):
+def get_and_format_main_equation_text(term_Na,term_h,term_Glc,three_solutions=['Moderate Salt solution','Strong salt solution','Sugar solution']):
     return equation_markdown_text_unformatted.format(Na_term=krc_term_to_latex(term_Na), 
-        h_term=krc_term_to_latex(term_h),
+        h_term=krc_term_to_latex(term_h,rounding=4),
         Glc_term=krc_term_to_latex(term_Glc),
         Na_val=ndarray_latex_format(SingleTerm_Calculation_Function(term_Na)),
-        h_val=ndarray_latex_format(SingleTerm_Calculation_Function(term_h)),
+        h_val=ndarray_latex_format(SingleTerm_Calculation_Function(term_h),rounding=4),
         Glc_val=ndarray_latex_format(SingleTerm_Calculation_Function(term_Glc)),
+                                                     sln1_val = three_solutions[0],
+                                                     sln2_val=three_solutions[1],
+                                                     sln3_val=three_solutions[2],
         function_val=ndarray_latex_format(Model_Calculation_Function([term_Na,term_h,term_Glc])))
 
 
